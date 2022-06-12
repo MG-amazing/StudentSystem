@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="test">
+    <select id="LoginVerification" resultType="one.bean.User">
+        select *
+        from userinfo;
+    </select>
+    <insert id="Registration" parameterType="one.bean.User">
+        insert into jinlesql.userinfo
+        values (#{UserName}, #{UserPwd}, #{StuNO});
+    </insert>
+    <select id="SelectStuInfo" parameterType="one.bean.Stuinfo">
+        select *
+        from stuinfo;
+    </select>
+    <insert id="InsertVSI" parameterType="one.bean.Stuinfo">
+        INSERT INTO stuinfo (StuNo, StuName, StuSex, StuBirthday, StuNation, StuPlace, StuMobile, StuEmail, StuDept, StuPro, StudentGrade, StuClass)
+        values (#{StuNo},#{StuName},#{StuSex},#{StuBirthday},#{StuNation},#{StuPlace},#{StuMobile},#{StuEmail},#{StuDept},#{StuPro},#{StudentGrade},#{StuClass});
+    </insert>
+    <insert id="InsertSAL" parameterType="one.bean.StuAskLevel">
+        INSERT INTO stuasklevel (StuNO, askStart, askEnd, askType, askReason, askDestination) values (#{StuNO},#{askStart},#{askEnd},#{askType},#{askReason},#{askDestination});
+    </insert>
+    <insert id="InsertSTD" parameterType="one.bean.StudentTurnDorm">
+        INSERT INTO stureturndorm (StuNO, StuDorm, StuReason) VALUES (#{StuNO}, #{StuDorm}, #{StuReason})
+
+    </insert>
+    <insert id="InsertSCO" parameterType="one.bean.StuScore">
+        INSERT INTO jinlesql.stuscore (StuNO, CourseName, CourseScore, Term) VALUES (#{StuNO}, #{CourseName}, #{CourseScore}, #{Term})
+    </insert>
+
+    <select id="GetName" resultType="one.bean.Stuinfo">
+        select *
+        from stuinfo;
+    </select>
+
+
+</mapper>
